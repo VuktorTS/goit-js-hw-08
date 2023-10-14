@@ -5,7 +5,6 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 // Change code below this line
 
 const listGallery = document.querySelector('.gallery');
-// listGallery.style.listStyle = 'none';
 
 function renderMarkup(galleryItems) {
   return galleryItems

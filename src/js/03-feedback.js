@@ -2,6 +2,7 @@ import _ from 'lodash.throttle';
 
 const form = document.querySelector('.feedback-form');
 const keyStorage = 'feedback-form-state';
+
 const locStorage = {
   getSrotage(key) {
     return JSON.parse(localStorage.getItem(key));
@@ -22,21 +23,25 @@ function formHandler(event) {
 
   locStorage.setStorage(keyStorage, formValue);
 }
+
 function onSubmit(event) {
   event.preventDefault();
-  const bd = locStorage.getSrotage(keyStorage);
 
-  if (bd) {
-    console.log(bd);
+  const data = locStorage.getSrotage(keyStorage);
+
+  if (data) {
+    console.log(data);
     form.elements.email.value = '';
     form.elements.message.value = '';
     localStorage.clear(keyStorage);
   }
 }
-function fillingForms(bd) {
-  if (bd) {
-    form.elements.email.value = bd.email;
-    form.elements.message.value = bd.message;
+
+function fillingForms(data) {
+  if (data) {
+    form.elements.email.value = data.email;
+    form.elements.message.value = data.message;
   }
 }
+
 fillingForms(locStorage.getSrotage(keyStorage));
